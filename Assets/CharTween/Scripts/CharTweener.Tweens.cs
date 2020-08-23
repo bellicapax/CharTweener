@@ -11,13 +11,13 @@ namespace CharTween
             PathMode pathMode = PathMode.Full3D, int resolution = 10, Color? gizmoColor = null)
         {
             var tweenPath = new Vector3[pathPoints + 1];
-            for (var i = 0; i < tweenPath.Length; ++i)
+            for (var i = 0; i < tweenPath.Length - 1; ++i)
             {
                 var theta = Mathf.Lerp(0, 2 * Mathf.PI, i / (float)(tweenPath.Length - 1));
-                tweenPath[i] = new Vector3(radius*Mathf.Cos(theta), radius*Mathf.Sin(theta), 0);
+                tweenPath[i] = transform.position + new Vector3(radius*Mathf.Cos(theta), radius*Mathf.Sin(theta), 0);
             }
 
-            tweenPath[tweenPath.Length - 1] = new Vector3(radius, 0, 0);
+            tweenPath[tweenPath.Length - 1] = transform.position + new Vector3(radius, 0, 0);
             SetPositionOffset(charIndex, tweenPath[0]);
             return DOPath(charIndex, tweenPath, duration, pathType, pathMode, resolution, gizmoColor);
         }
