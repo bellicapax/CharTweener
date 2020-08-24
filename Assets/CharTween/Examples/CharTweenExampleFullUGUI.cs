@@ -35,7 +35,6 @@ namespace CharTween.Examples
             {
                 var timeOffset = Mathf.Lerp(0, 1, (i - start) / (float) (end - start + 1));
                 var circleTween = _tweener.DOCircle(i, 3, 0.5f)
-                //var circleTween = _tweener.DOCircleUGUI(viewCamera, i, 3, 0.5f)
                     .SetEase(Ease.Linear)
                     .SetLoops(-1, LoopType.Restart);
                 var colorTween = _tweener.DOColor(i, Color.yellow, 0.5f)
